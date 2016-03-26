@@ -73,6 +73,22 @@ public class Window extends JFrame{
 		
 		this.add(mainPanel);
 		
+		sendB.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						client.send("aziz", "memo", "hhhhhhhh");
+					}
+				}).start();
+			}
+		});
+		
 		logoutB.addActionListener(new ActionListener() {
 			
 			@Override
@@ -81,6 +97,7 @@ public class Window extends JFrame{
 				frame.setTitle(title);
 				loginB.setVisible(true);
 				mainPanel.setVisible(false);
+				client.close();
 			}
 		});
 		
@@ -109,6 +126,7 @@ public class Window extends JFrame{
 						System.out.println("connected");
 						statusLabel.setText("Connected");
 					}else{
+						System.out.println("logout");
 						logoutB.doClick();
 					}
 				} catch (IOException e1) {

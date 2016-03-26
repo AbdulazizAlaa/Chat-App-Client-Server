@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 public class Client {
 	
 	public String serverIp = "localhost";
-	public String serverValidation = "ok i know you ";
+	public String serverValidation = "ok";
 	public int port;
 	public String username;
 	public String response;
@@ -47,7 +47,7 @@ public class Client {
 		serverOut.flush();
 		
 		response = serverIn.readUTF();
-		
+		System.out.println(response);
 		if(!response.equals(serverValidation)){
 			return false;
 		}
@@ -56,13 +56,51 @@ public class Client {
 	}
 	
 	
-	public boolean Close() throws IOException{
+	public boolean close(){
 		
-		serverIn.close();
-		serverOut.close();
-		socket.close();
+		try {
+			serverIn.close();
+			serverOut.close();
+			socket.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean send(String sender, String receiver, String message){
+		
+		String msg = sender+","+receiver+","+message;
+		
+		try {
+			serverOut.writeUTF(msg);
+			
+			response = serverIn.readUTF();
+			
+			System.out.println(response);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+			return false;
+		}
 		
 		return true;
+	}
+	
+	public String[] requestUsersList(){
+		String[] users = null;
+		
+		try {
+			serverOut.writeUTF("userslist");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return users;
 	}
 	
 	public static void main(String[] args) {
