@@ -1,0 +1,12 @@
+{
+  "nativescript": {
+    "id": "org.nativescript.chatapp",
+    "tns-android": {
+      "version": "1.7.1"
+    }
+  },
+  "dependencies": {
+    "nativescript-socketio": "^1.0.3",
+    "tns-core-modules": "1.7.1"
+  }
+}

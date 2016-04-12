@@ -1,0 +1,11 @@
+<page loaded="loaded">
+
+  <GridLayout>
+    <ListView items="{{ friendsList }}" itemTap="listItemOnClick">
+      <ListView.itemTemplate>
+        <Label text="{{ name }}" horizontalAlignment="left" verticalAlignment="center"/>
+      </ListView.itemTemplate>
+    </ListView>
+  </GridLayout>
+
+</page>

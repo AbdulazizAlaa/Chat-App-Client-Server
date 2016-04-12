@@ -1,0 +1,25 @@
+<page loaded="loaded">
+
+    <page.actionBar>
+      <ActionBar title="Room" android.icon="res://person-icon"/>
+    </page.actionBar>
+
+    <StackLayout orientation="vertical">
+
+      <StackLayout style="height: 300px;">
+        <ListView items="{{ ChatList }}" verticalAlignment="top" itemTap="listItemOnClick">
+          <ListView.itemTemplate>
+            <Label text="{{ text }}" horizontalAlignment="left" verticalAlignment="center"/>
+          </ListView.itemTemplate>
+        </ListView>
+      </StackLayout>
+
+      <StackLayout orientation="horizontal" verticalAlignment="bottom">
+        <TextField id="messageTF" hint="Message" text="{{ message }}" autocapitalizationType="none" autocorrect="false"/>
+        <Button id="sendB" text="Send" tap="send"/>
+      </StackLayout>
+
+    </StackLayout>
+
+
+</page>

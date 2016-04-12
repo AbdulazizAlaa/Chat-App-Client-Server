@@ -1,0 +1,12 @@
+<page loaded="loaded">
+
+
+  <StackLayout orientation="vertical">
+    <label text="Hello World"/>
+    <TextField id="nameTF" hint="Username" text="{{ username }}" autocapitalizationType="none" autocorrect="false"/>
+    <Button id="signinB" text="Sign In" tap="signin"/>
+
+    <label id="statusL" text="{{ status }}"/>
+  </StackLayout>
+
+</page>
